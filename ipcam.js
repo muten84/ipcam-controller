@@ -93,7 +93,7 @@ var control = {
 			return cmd;
 		}
 
-		function decode(action, value){
+		var _decode =  function(action, value){
 			var url = ""+camera.host.ip+":"+camera.host.port+"/";
 			var credentials = "loginuse="+camera.credentials.login+"&loginpas="+camera.credentials.pwd;
 			if(action === 'camera.control.ptz.velocity'){
@@ -110,8 +110,9 @@ var control = {
 			}
 			return url;
 		}
-
-		return {decode};
+		var o = {};
+		o.decode = _decode;
+		return o;
 	}();
 
   camera.control = control;
