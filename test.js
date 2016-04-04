@@ -1,16 +1,26 @@
 var ipcam = require('./ipcam');
-console.log(ipcam);
+var sricam_af004 = require('./sricamAF004');
+var querystring = require ('querystring');
 var host = {
-		ip: '192.168.0.2',
-		port: '81'
+		ip: '192.168.0.2'
 	};
 
 	var credentials = {
 		login:"admin",
 		pwd: "secret"
 	};
-ipcam.setup(host,credentials);
+
+
+ipcam.setup(
+	{
+		ip: '192.168.0.2'
+	},
+	{
+		login: "admin",
+		pwd: "troppsecret"
+
+	}, sricam_af004);
 var controller = ipcam.methods;
 var protocol='http://';
-var path = controller.decode('camera.control.ptz.move', 'right');
-console.log(protocol+path);
+var url = controller.decode('camera.control.ptz.stop', 'right',true);
+console.log(url);

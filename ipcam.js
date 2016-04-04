@@ -1,39 +1,14 @@
 //var http = require ('http');
+var querystring = require ('querystring');
 
 var camera = {};
-camera.setup = function(host, credentials){
+var control = {};
+camera.setup = function(host, credentials, controlSpec){
     camera.host=host;
     camera.credentials=credentials;
+    camera.control=controlSpec
 }
 
-var control = {
-	    ptz : {
-			velocity : {
-				action: "camera_control.cgi",
-				param: "100",
-				slow: "1",
-				mid: "5",
-				fast: "10"
-			},
-
-			stop : {
-				up: "3",
-				down: "1",
-				left: "5",
-				right: "7"
-			},
-
-			move : {
-				action: "decoder_control.cgi",
-				preset1: "31",
-				preset2: "33",
-				up: "0",
-				down: "2",
-				left: "6",
-				right: "4"
-			}
-		}
-  }
   var methods = function(){
 		var hP = 0;
 
@@ -93,7 +68,32 @@ var control = {
 			return cmd;
 		}
 
-		var _decode =  function(action, value){
+    var _decode = function(action,value,basicAuth){
+      console.log(action+" - "+value+" - "+basicAuth);
+       var protocol= "http://";
+       var user=camera.credentials.login;
+       var pwd=camera.credentials.pwd;
+       if(basicAuth){
+         protocol+=user+":"+pwd+"@";
+       }
+       var host = ""+camera.host.ip;
+       if(camera.host.port){
+         host+=":"+camera.host.port;
+       }
+       var path = eval(action+".action");
+       var params = {};
+       var name = eval(action+".paramName");
+       var val = eval(""+action+"."+value);
+       console.log(name);
+       console.log(val);
+       params[name]=val;
+       params[camera.control.auth.userParam]=user;
+       params[camera.control.auth.passParam]=pwd;
+       var query = querystring.stringify(params);
+       return protocol+host+"/"+path+"?"+query;
+    }
+
+		var __decode =  function(action, value){
 			var url = ""+camera.host.ip+":"+camera.host.port+"/";
 			var credentials = "loginuse="+camera.credentials.login+"&loginpas="+camera.credentials.pwd;
 			if(action === 'camera.control.ptz.velocity'){
@@ -105,7 +105,7 @@ var control = {
 				url+= ptzMove(eval(action), value);
 			}
 			else if(action === 'camera.control.ptz.stop'){
-				url+= camera.control.ptz.move.action+"?"+credentials+"&";
+				url+= camera.control.ptz.stop.action+"?"+credentials+"&";
 				url+= ptzStop(eval(action), value);
 			}
 			return url;
@@ -115,6 +115,6 @@ var control = {
 		return o;
 	}();
 
-  camera.control = control;
+  camera.control=control;
   camera.methods=methods;
   module.exports = camera;
