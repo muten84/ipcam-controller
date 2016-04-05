@@ -6,6 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "devDependencies": {
+    "jshint": ">=2.8.0",
+    "jscs": ">=2.8.0",
+    "istanbul": ">=0.4.1",
+    "mocha": ">=2.3.4",
+    "should": ">=8.0.2",
+    "rewire": ">=2.5.1",
+    "sinon": ">=1.17.2"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/muten84/ipcam-controller.git"
@@ -19,5 +28,11 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/muten84/ipcam-controller/issues"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/jshint ./src --reporter=./node_modules/jshint/src/reporters/default.js",
+    "checkStyle": "./node_modules/.bin/jscs ./src --preset=node-style-guide",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- ./test --recursive -R spec -r should",
+    "posttest": "./node_modules/.bin/istanbul check-coverage"
   }
 }

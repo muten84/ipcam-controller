@@ -1,3 +1,4 @@
+var moveType = "camera.control.ptz.move";
 var sricam_af004 = {
       auth : {
         userParam: "loginuse",
@@ -31,7 +32,21 @@ var sricam_af004 = {
           left: "6",
           right: "4"
         }
-    }
+    },
+    actions: [
+      {
+      key: "moveLeft",
+      action:{
+        type: moveType,
+        value: "left"
+      }},
+      {
+      key: "moveRight",
+      action:{
+        type: moveType,
+        value: "right"
+      }}
+      ]
   }
 
   module.exports = sricam_af004;
