@@ -18,7 +18,7 @@ ipcam.setup(
 	},
 	{
 		login: "admin",
-		pwd: "manga123"
+		pwd: ""
 
 	}, sricam_af004);
 var controller = ipcam.methods;
@@ -56,12 +56,10 @@ function commandFor(start,stop,duration){
 		},
 		function(err){
 			console.log("Error: "+err);
-		}	
+		}
 	)
 }
 
 var urlStart = controller.decode('camera.control.ptz.move', 'left',true);
 var urlStop = controller.decode('camera.control.ptz.stop', 'left',true);
 commandFor(urlStart,urlStop,3000);
-
-
