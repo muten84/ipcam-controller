@@ -9,16 +9,16 @@ function CameraControl(id){
 
 CameraControl.prototype.setup = function(host, credentials, controlSpec){
   /*check host param*/
-  console.log(host);
+  //console.log(host);
   if(Utils.isString(host)){
-    console.log("host is string")
+    //console.log("host is string")
     this.camera.host={ip: host};
   }
   else if(!Utils.isObject(host)){
     throw new Error("if not a string host should be an object");
   }
   else if(Utils.checkObjectProps(host,["ip"])){
-    console.log("host is object but not has own property set")
+    //console.log("host is object but not has own property set")
     this.camera.host=host;
   } else{
     this.camera.host = null;
@@ -49,7 +49,7 @@ CameraControl.prototype.getCamera = function(){
 }
 
 CameraControl.prototype.decode = function(action,value,basicAuth){
-  console.log(action+" - "+value+" - "+basicAuth);
+  //console.log(action+" - "+value+" - "+basicAuth);
   var protocol= "http://";
   var user=this.camera.credentials.login;
   var pwd=this.camera.credentials.pwd;
@@ -64,13 +64,35 @@ CameraControl.prototype.decode = function(action,value,basicAuth){
   var params = {};
   var name = eval("this."+action+".paramName");
   var val = eval("this."+action+"."+value);
-  console.log(name);
-  console.log(val);
+  //console.log(name);
+  //console.log(val);
   params[name]=val;
   params[this.camera.control.auth.userParam]=user;
   params[this.camera.control.auth.passParam]=pwd;
   var query = querystring.stringify(params);
   return protocol+host+"/"+path+"?"+query;
+}
+
+CameraControl.prototype.getActionType = function(key){
+  var actions = this.camera.control.actions;
+  var type = "";
+  actions.forEach(function(act){
+    if(act.key===key){
+      type=act.action.type;
+    }
+  });
+  return type;
+}
+
+CameraControl.prototype.getActionValue = function(key){
+  var actions = this.camera.control.actions;
+  var val = "";
+  actions.forEach(function(act){
+    if(act.key===key){
+      val=act.action.value;
+    }
+  });
+  return val;
 }
 
 module.exports = CameraControl;

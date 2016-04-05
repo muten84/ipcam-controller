@@ -1,4 +1,7 @@
 var moveType = "camera.control.ptz.move";
+var stopType = "camera.control.ptz.stop";
+var velocityType = "camera.control.ptz.velocity";
+
 var sricam_af004 = {
       auth : {
         userParam: "loginuse",
