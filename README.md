@@ -2,7 +2,7 @@
 
 ###Install:
 
-npm install -g git+https://github.com/muten84/ipcam-controller.git
+    npm install -g git+https://github.com/muten84/ipcam-controller.git
 
 ###Usage:
 
