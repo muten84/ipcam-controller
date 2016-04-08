@@ -11,4 +11,4 @@ var config = {
 }
 
 camera.init(config);
-camera.moveLeft().then(camera.stopLeft).then(camera.done);
+camera.moveRight().then(camera.stopRight);

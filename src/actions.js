@@ -42,6 +42,8 @@ function done(){
 var exp = {
   init: init,
   moveLeft: moveLeft,
+  moveRight: moveRight,
+  stopRight: stopRight,
   stopLeft: stopLeft,
   done: done}
 
