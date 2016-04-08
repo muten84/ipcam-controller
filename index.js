@@ -1,14 +1,13 @@
-var camera=require('./src/actions.js')
+var factory = require("./CameraFactory.js");
+var Step = require("./Step.js");
 
-
-//initialize camera
-var config = {
-  ip: "10.0.0.4",
-  name: "Garden",
-  type: "sricamAF004",
-  user: "admin",
-  pwd: "manga123"
+var api = {
+ createCamera: function(name, type, props){
+   return factory.createSingletonCamera(name,type,props); 
+ },
+ 
+ //TODO
+ 
 }
 
-camera.init(config);
-camera.moveRight().then(camera.stopRight);
+module.exports = api;

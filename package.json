@@ -3,11 +3,15 @@
   "version": "0.0.1",
   "description": "Node module for controlling PTZ commands of IPCamera",
   "main": "index.js",
+  "bin": {
+	"ipcam": "./ipcam.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "promise": "7.1.1"
+    "promise": "7.1.1",
+	"commander": "2.9.0"
   },
   "devDependencies": {
     "jshint": ">=2.8.0",
