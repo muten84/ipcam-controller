@@ -3,6 +3,10 @@
 ###Install:
 
     npm install -g git+https://github.com/muten84/ipcam-controller.git
+    
+or from npm:
+
+    npm install -g ipcam-controller
 
 ###Usage:
 
