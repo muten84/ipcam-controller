@@ -6,7 +6,7 @@ var sendRequest = function(id,url,props){
     var req = http.request (url, function (response) {
 
       // response
-      response.setEncoding (props.encoding || 'utf8');
+      response.setEncoding ('utf8');
       var data = '';
 
       response.on ('data', function (chunk) { data += chunk });

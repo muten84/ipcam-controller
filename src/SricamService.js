@@ -24,6 +24,7 @@ SricamService.prototype.step = function(action,duration){
   var url = camera.decode(type,val,false);
   var s = new Step(url,duration);
   var promise = new Promise(function (resolve, reject) {
+    console.log("step started");
     Step.execute(s).then(function(){
       console.log("step executed after: "+duration);
       resolve("executed");

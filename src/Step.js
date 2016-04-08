@@ -17,13 +17,14 @@ Step.execute = function(step){
       reject(err);
     });
     var props = {encoding: "UTF-8", callback: function(data){
+    var d = data;
       setTimeout(function(){
-        console.log("resolve: "+data);
-        resolve(data);
+        console.log("resolve: "+d);
+        resolve(d);
       }, duration);
     }}
-
-    $http.sendRequest(url, props);
+    console.log("invoking url: "+url);
+    $http.sendRequest("1",url, props);
   });
   return promise;
 }
