@@ -16,8 +16,8 @@ function SricamService(config){
   console.log(camera);
 }
 
-SricamService.prototype.step = function(action,duration){
-  var camera =this.camera;
+SricamService.execute = function(service,action,duration){
+  var camera =service.camera;
   console.log("creating step: "+action+" - "+duration);
   var type = camera.getActionType(action);
   var val = camera.getActionValue(action);

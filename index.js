@@ -11,7 +11,7 @@ var config = {
   pwd: "manga123"
 }
 
-var camera = new IPCamera(config);
+var service = new IPCamera(config);
 
 function done(){
   console.log("done");
@@ -19,14 +19,14 @@ function done(){
 
 function moveLeft(){
   var promise = new Promise(function (resolve, reject) {
-  camera.step("moveLeft",3000).then(resolve("ok"));
+  IPCamera.execute(service,"moveLeft",3000).then(resolve);
   });
   return promise;
 }
 
 function stopLeft(){
   var promise = new Promise(function (resolve, reject) {
-  camera.step("stopLeft",3000).then(resolve("ok"));
+  IPCamera.execute(service,"stopLeft",3000).then(resolve);
   });
   return promise;
 }
