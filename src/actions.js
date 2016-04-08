@@ -2,35 +2,37 @@ var IPCamera = require("./SricamService.js");
 var Promise = require("promise");
 
 var service = null;
+var config = null;
 
 function init(config){
    service = new IPCamera(config);
+   config = config;
 }
 
 function moveLeft(){
   var promise = new Promise(function (resolve, reject) {
-  IPCamera.execute(service,"moveLeft",3000).then(resolve);
+  IPCamera.execute(service,"moveLeft").then(resolve);
   });
   return promise;
 }
 
 function moveRight(){
   var promise = new Promise(function (resolve, reject) {
-  IPCamera.execute(service,"moveRight",3000).then(resolve);
+  IPCamera.execute(service,"moveRight").then(resolve);
   });
   return promise;
 }
 
 function stopRight(){
   var promise = new Promise(function (resolve, reject) {
-  IPCamera.execute(service,"stopRight",3000).then(resolve);
+  IPCamera.execute(service,"stopRight").then(resolve);
   });
   return promise;
 }
 
 function stopLeft(){
   var promise = new Promise(function (resolve, reject) {
-  IPCamera.execute(service,"stopLeft",3000).then(resolve);
+  IPCamera.execute(service,"stopLeft").then(resolve);
   });
   return promise;
 }

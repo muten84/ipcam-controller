@@ -1,13 +1,20 @@
-var factory = require("./CameraFactory.js");
-var Step = require("./Step.js");
 
-var api = {
- createCamera: function(name, type, props){
-   return factory.createSingletonCamera(name,type,props); 
- },
- 
- //TODO
- 
+function IpCameraController(){
+  
 }
 
+function IpCameraFactory(){
+}
+
+IpCameraFactory.prototype.addType = function{typeSpec}{
+}
+
+IpCameraFactory.prototype.createCamera = function(type){
+}
+
+IpCameraController.prototype.action = function(){
+}
+
+
+var api{};
 module.exports = api;
