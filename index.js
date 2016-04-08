@@ -1,5 +1,4 @@
-var IPCamera = require("./src/SricamService.js");
-var Promise = require("promise");
+var camera=require('./src/actions.js')
 
 
 //initialize camera
@@ -11,24 +10,5 @@ var config = {
   pwd: "manga123"
 }
 
-var service = new IPCamera(config);
-
-function done(){
-  console.log("done");
-}
-
-function moveLeft(){
-  var promise = new Promise(function (resolve, reject) {
-  IPCamera.execute(service,"moveLeft",3000).then(resolve);
-  });
-  return promise;
-}
-
-function stopLeft(){
-  var promise = new Promise(function (resolve, reject) {
-  IPCamera.execute(service,"stopLeft",3000).then(resolve);
-  });
-  return promise;
-}
-
-moveLeft().then(stopLeft).then(done);
+camera.init(config);
+camera.moveLeft().then(camera.stopLeft).then(camera.done);
