@@ -13,8 +13,6 @@ var config = {
 
 var camera = new IPCamera(config);
 
-moveLeft().then(done);
-
 function done(){
   console.log("done");
 }
@@ -26,9 +24,11 @@ function moveLeft(){
   return promise;
 }
 
-function moveRight(){
+function stopLeft(){
   var promise = new Promise(function (resolve, reject) {
-  camera.step("moveRight",3000).then(resolve("ok"));
+  camera.step("stopLeft",3000).then(resolve("ok"));
   });
   return promise;
 }
+
+moveLeft().then(stopLeft).then(done);

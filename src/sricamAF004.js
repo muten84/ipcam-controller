@@ -42,11 +42,23 @@ var sricam_af004 = {
       action:{
         type: moveType,
         value: "left"
-      }},
+      }},      
       {
       key: "moveRight",
       action:{
         type: moveType,
+        value: "right"
+      }},
+      {
+      key: "stopLeft",
+      action:{
+        type: stopType,
+        value: "left"
+      }},
+      {
+      key: "stopRight",
+      action:{
+        type: stopType,
         value: "right"
       }}
       ]
