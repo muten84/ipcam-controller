@@ -1,4 +1,4 @@
-var Service = require("./src/SricamService.js");
+var IPCamera = require("./src/SricamService.js");
 
 
 //initialize camera
@@ -10,13 +10,10 @@ var config = {
   pwd: "secret"
 }
 
-var s = new Service(config);
+var camera = new IPCamera(config);
 
-//example for move left for 3 secs and move right for 3 secs
-execute(s.step("moveLeft",3000)).then(function(){
-  console.log("ok")
-});
+camera.step("moveLeft",3000).then(camera.step("moveRight", 3000).then(done));
 
-function execute(fun){
-  return fun();
+function done(){
+  console.log("done");
 }

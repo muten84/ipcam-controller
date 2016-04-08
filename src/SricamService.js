@@ -1,5 +1,6 @@
 var factory = require("./CameraFactory.js");
 var Step = require("./Step.js");
+var Promise = require("promise");
 
 function SricamService(config){
   var ip  = config.ip;
@@ -22,8 +23,13 @@ SricamService.prototype.step = function(action,duration){
   var val = camera.getActionValue(action);
   var url = camera.decode(type,val,false);
   var s = new Step(url,duration);
-  return s.defer;
-  //return Step.createStep(url,duration);
+  var promise = new Promise(function (resolve, reject) {
+    Step.execute(s).then(function(){
+      console.log("step executed after: "+duration);
+      resolve("executed");
+    });
+  });
+  return promise;
 }
 
 module.exports = SricamService;

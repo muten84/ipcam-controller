@@ -7,23 +7,25 @@ function Step(url,duration){
   this.duration=duration;
 }
 
-Step.prototype.defer = function(){
-  var duration = this.duration;
+Step.execute = function(step){
+  var duration = step.duration;
+  var url = step.url;
+
   var promise = new Promise(function (resolve, reject) {
     $http.on("connection-error", function(err){
+      console.log("connection-error: "+err);
       reject(err);
     });
     var props = {encoding: "UTF-8", callback: function(data){
-      setTimeout(function(){resolve(data)}, duration);
+      setTimeout(function(){
+        console.log("resolve: "+data);
+        resolve(data);
+      }, duration);
     }}
+
     $http.sendRequest(url, props);
   });
   return promise;
 }
 
-// function createStep(url,duration){
-//   return new Step(url,duration).defer;
-// }
-
-// var o = {createStep:createStep, Step: Step }
 module.exports = Step;
