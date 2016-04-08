@@ -39,6 +39,10 @@ function done(){
   console.log("done");
 }
 
-var exp = {init,moveLeft,stopLeft,done}
+var exp = {
+  init: init,
+  moveLeft: moveLeft,
+  stopLeft: stopLeft,
+  done: done}
 
 module.exports=exp;
