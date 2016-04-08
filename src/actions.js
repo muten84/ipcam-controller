@@ -14,6 +14,20 @@ function moveLeft(){
   return promise;
 }
 
+function moveRight(){
+  var promise = new Promise(function (resolve, reject) {
+  IPCamera.execute(service,"moveRight",3000).then(resolve);
+  });
+  return promise;
+}
+
+function stopRight(){
+  var promise = new Promise(function (resolve, reject) {
+  IPCamera.execute(service,"stopRight",3000).then(resolve);
+  });
+  return promise;
+}
+
 function stopLeft(){
   var promise = new Promise(function (resolve, reject) {
   IPCamera.execute(service,"stopLeft",3000).then(resolve);
