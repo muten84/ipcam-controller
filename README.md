@@ -10,9 +10,9 @@ or from npm:
 
 ###Usage:
 
-ipcam [options] action
+    ipcam [options] action
 
-  Where action can one of: left, right, up, down, left-up, left-down, right-up, right-down
+  Where action can be one of: left, right, up, down, left-up, left-down, right-up, right-down
 
   Options:
 
