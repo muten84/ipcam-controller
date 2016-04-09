@@ -9,6 +9,14 @@ function init(config){
    config = config;
 }
 
+function moveLeftAndStop(){
+  moveLeft().then(stopLeft);
+}
+
+function moveRightAndStop(){
+  moveRight().then(stopRight);
+}
+
 function moveLeft(){
   var promise = new Promise(function (resolve, reject) {
   IPCamera.execute(service,"moveLeft").then(resolve);

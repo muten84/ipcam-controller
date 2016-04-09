@@ -51,10 +51,10 @@ function scheduleActionFor(action, during,times){
   var fun = null;
   switch (action) {
     case 'left':
-      fun = camera.moveLeft;
+      fun = camera.moveLeftAndStop;
       break;
     case 'right':
-      fun = camera.moveRight;
+      fun = camera.moveRightAndStop;
       break;
     default:
       break;
