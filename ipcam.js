@@ -26,26 +26,39 @@ program
   var duration = program.duration;
   var schedule = program.schedule;
   var count = program.count;
-   console.log('camera: %s action: %s user: %s pwd: %s ip: %s, duration: %s, schedule: %s, count: %s',
-        cameraType, action, user, pwd, ip, duration, schedule, count);
+  console.log('camera: %s action: %s user: %s pwd: %s ip: %s, duration: %s, schedule: %s, count: %s',
+  cameraType, action, user, pwd, ip, duration, schedule, count);
   var config = {
-  ip: ip,
-  name: "Camera",
-  type: cameraType,
-  user: user,
-  pwd: pwd,
-  duration: duration
+    ip: ip,
+    name: "Camera",
+    type: cameraType,
+    user: user,
+    pwd: pwd,
+    duration: duration
   }
   camera.init(config);
-  switch(action){
-   case 'left':
-    camera.moveLeft().then(camera.stopLeft);
-    break;
-   case 'right':
-    camera.moveRight().then(camera.stopRight);
-    break;
-   default:
-    break;
+  if(!schedule){
+    doNow(action);
+  }else{
+    scheduleActionFor(action,schedule,count||1);
   }
 })
 .parse(process.argv);
+
+function scheduleActionFor(action, during,times){
+  console.log("scheduleActionFor: %s, %s, %s", action, during, times);
+}
+
+function doNow(action){
+  console.log("doNow");
+  switch(action){
+    case 'left':
+      camera.moveLeft().then(camera.stopLeft);
+      break;
+    case 'right':
+      camera.moveRight().then(camera.stopRight);
+      break;
+    default:
+      break;
+  }
+}
