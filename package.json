@@ -1,13 +1,16 @@
 {
   "name": "ipcam-controller",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node module for controlling PTZ commands of IPCamera",
   "main": "index.js",
   "bin": {
     "ipcam": "./ipcam.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "./node_modules/.bin/jshint ./src --reporter=./node_modules/jshint/src/reporters/default.js",
+    "checkStyle": "./node_modules/.bin/jscs ./src --preset=node-style-guide",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- ./test --recursive -R spec -r should",
+    "posttest": "./node_modules/.bin/istanbul check-coverage"
   },
   "dependencies": {
     "promise": "7.1.1",
@@ -37,11 +40,5 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/muten84/ipcam-controller/issues"
-  },
-  "scripts": {
-    "lint": "./node_modules/.bin/jshint ./src --reporter=./node_modules/jshint/src/reporters/default.js",
-    "checkStyle": "./node_modules/.bin/jscs ./src --preset=node-style-guide",
-    "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- ./test --recursive -R spec -r should",
-    "posttest": "./node_modules/.bin/istanbul check-coverage"
   }
 }
