@@ -7,5 +7,5 @@ function schedule(action,during,times){
   var then = moment(now).add(during, 'm');
   scheduler.do(action).count(times).between(now, then).done();
 }
-
-module.exports = schedule;
+var obj = { schedule : schedule}
+module.exports = obj;
