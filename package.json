@@ -4,17 +4,18 @@
   "description": "Node module for controlling PTZ commands of IPCamera",
   "main": "index.js",
   "bin": {
-	"ipcam": "./ipcam.js"
+    "ipcam": "./ipcam.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "promise": "7.1.1",
-	"commander": "2.9.0"
+    "commander": "2.9.0",
+    "moment": "^2.9.0",
+    "fuzzy-scheduler": "1.0.0"
   },
   "devDependencies": {
-    "jshint": ">=2.8.0",
     "jshint": ">=2.8.0",
     "jscs": ">=2.8.0",
     "istanbul": ">=0.4.1",
