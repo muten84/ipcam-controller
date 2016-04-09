@@ -1,6 +1,7 @@
 #!/usr/bin/node
 
 var camera=require('./src/actions.js')
+var scheduler=require('./src/scheduler.js')
 var program = require('commander');
 
 
@@ -47,6 +48,18 @@ program
 
 function scheduleActionFor(action, during,times){
   console.log("scheduleActionFor: %s, %s, %s", action, during, times);
+  var fun = null;
+  switch (action) {
+    case 'left':
+      fun = camera.moveLeft;
+      break;
+    case 'right':
+      fun = camera.moveRight;
+      break;
+    default:
+      break;
+  }
+  scheduler.schedule(fun,during,times);
 }
 
 function doNow(action){
