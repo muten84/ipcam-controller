@@ -56,7 +56,7 @@ var exp = {
   stopRight: stopRight,
   stopLeft: stopLeft,
   moveLeftAndStop: moveLeftAndStop,
-  moveRightAndStop: moveRightAndStop
+  moveRightAndStop: moveRightAndStop,
   done: done}
 
 module.exports=exp;
