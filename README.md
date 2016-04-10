@@ -27,3 +27,29 @@ or from npm:
 
 ###Built in Model Types:
  - sricamAP004
+
+
+##API:
+The ipcam-controller module provides a library for javascript direct usage. The API are very simple. See examples below:
+
+    var IPCamera = require('ipcam-controller');
+    var camera = new IPCamera();
+    var config = {
+        ip: "127.0.0.1",
+        name: "Camera",
+        type: "sricamAP004",
+        user: "admin",
+        pwd: "troppsecret",
+        duration: "3000" //default moves duration
+    }
+    camera.createCamera(config.name,config.type,config);
+    //move camera left direction and after 3 secs stop movement.
+    camera.moveLeftFor(3000);
+    //generic action return a promise after duration execution time
+    function done(){
+        //for sricam it is usfule to stop movement
+    }
+    camera.action("moveLeft", 3000).then(done);
+    //schedule examples: schedule an amount of two moveLeft actions within next 5 minutes, so all moves will be executed within 5 minutes. Duration is the default move duration passed in the config object 
+    camera.schedule("moveLeft",5,2);
+    
