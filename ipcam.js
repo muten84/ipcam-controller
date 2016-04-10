@@ -1,14 +1,7 @@
 #!/usr/bin/node
 
-var camera=require('./src/actions.js')
-var scheduler=require('./src/scheduler.js')
 var program = require('commander');
-
-
-//initialize camera
-//camera.moveRight().then(camera.stopRight);
-//camera.moveLeft().then(camera.stopLeft);
-
+var IPCamera = require('./index.js');
 
 program
 .arguments('<action>')
@@ -37,24 +30,25 @@ program
     pwd: pwd,
     duration: duration
   }
-  camera.init(config);
+  var camera = new IPCamera();
+  camera.createCamera(name,type,config);
   if(!schedule){
-    doNow(action);
+    doNow(camera,action,duration);
   }else{
-    scheduleActionFor(action,schedule,count||1);
+    scheduleActionFor(camera,action,duration,schedule,count||1);
   }
 })
 .parse(process.argv);
 
-function scheduleActionFor(action, during,times){
+function scheduleActionFor(camera,action,duration,during,times){
   console.log("scheduleActionFor: %s, %s, %s", action, during, times);
   var fun = null;
   switch (action) {
     case 'left':
-      fun = camera.moveLeftAndStop;
+      fun = function(){camera.moveLeftFor(duration);}
       break;
     case 'right':
-      fun = camera.moveRightAndStop;
+      fun = function(){camera.moveRightFor(duration);}
       break;
     default:
       break;
@@ -62,14 +56,14 @@ function scheduleActionFor(action, during,times){
   scheduler.schedule(fun,during,times);
 }
 
-function doNow(action){
+function doNow(camera,action,duration){
   console.log("doNow");
   switch(action){
     case 'left':
-      camera.moveLeft().then(camera.stopLeft);
+      camera.moveLeftFor(duration);
       break;
     case 'right':
-      camera.moveRight().then(camera.stopRight);
+      camera.moveRightFor(duration);
       break;
     default:
       break;
