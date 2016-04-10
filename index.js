@@ -25,7 +25,7 @@ IpCameraController.prototype.schedule = function(action,when,times){
   Scheduler.schedule(action,when,times);
 }
 
-IpCameraController.prototype.moveLeftFor(duration){
+IpCameraController.prototype.moveLeftFor = function(duration){
   var self = this;
   var promise = new Promise(function (resolve, reject) {
     self.action("moveLeft",duration).then(resolve);
@@ -33,7 +33,7 @@ IpCameraController.prototype.moveLeftFor(duration){
   return promise;
 }
 
-IpCameraController.prototype.moveRightFor(duration){
+IpCameraController.prototype.moveRightFor = function(duration){
   var self = this;
   var promise = new Promise(function (resolve, reject) {
     self.action("moveRight",duration).then(resolve);
