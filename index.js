@@ -52,4 +52,4 @@ IpCameraController.prototype.createCamera = function(name,type,config){
     return promise;
   }
 
-  module.exports = new IpCameraController;
+  module.exports = IpCameraController;
