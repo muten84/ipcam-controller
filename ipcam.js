@@ -33,7 +33,7 @@ program
     duration: duration
   }
   var camera = new IPCamera();
-  camera.createCamera(config.name,type,config);
+  camera.createCamera(config.name,cameraType,config);
   if(!schedule){
     doNow(camera,action,duration);
   }else{
