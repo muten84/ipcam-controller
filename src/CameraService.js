@@ -24,7 +24,7 @@ function CameraService(config,camera){
 
 CameraService.execute = function(service,action,d){
   var camera =service.camera;
-  var duration = d;/*||defaultDuration;*/
+  var duration = d||defaultDuration;
   console.log("creating step: "+action+" - "+duration);
   var type = camera.getActionType(action);
   var val = camera.getActionValue(action);
