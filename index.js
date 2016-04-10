@@ -18,33 +18,33 @@ IpCameraController.prototype.createCamera = function(name,type,config){
   var type = config.type;
   var user = config.user;
   var auth = config.pwd;
-  this.camera = factory.createCamera(name,type,  host:{ip: ip},
-    credentials: {login: user, pwd: auth});
-  this.service = new Service({},this.camera);
-}
+  this.camera = factory.createCamera(name,type, { host:{ip: ip},
+    credentials: {login: user, pwd: auth}});
+    this.service = new Service({},this.camera);
+  }
 
-IpCameraController.prototype.action = function(action,duration){
-  Service.execute(this.service,action,duratin);
-}
+  IpCameraController.prototype.action = function(action,duration){
+    Service.execute(this.service,action,duratin);
+  }
 
-IpCameraController.prototype.schedule = function(action,when,times){
-  Scheduler.schedule(action,when,times);
-}
+  IpCameraController.prototype.schedule = function(action,when,times){
+    Scheduler.schedule(action,when,times);
+  }
 
-IpCameraController.prototype.moveLeftFor = function(duration){
-  var self = this;
-  var promise = new Promise(function (resolve, reject) {
-    self.action("moveLeft",duration).then(resolve);
-  });
-  return promise;
-}
+  IpCameraController.prototype.moveLeftFor = function(duration){
+    var self = this;
+    var promise = new Promise(function (resolve, reject) {
+      self.action("moveLeft",duration).then(resolve);
+    });
+    return promise;
+  }
 
-IpCameraController.prototype.moveRightFor = function(duration){
-  var self = this;
-  var promise = new Promise(function (resolve, reject) {
-    self.action("moveRight",duration).then(resolve);
-  });
-  return promise;
-}
+  IpCameraController.prototype.moveRightFor = function(duration){
+    var self = this;
+    var promise = new Promise(function (resolve, reject) {
+      self.action("moveRight",duration).then(resolve);
+    });
+    return promise;
+  }
 
-module.exports = new IpCameraController();
+  module.exports = new IpCameraController();
