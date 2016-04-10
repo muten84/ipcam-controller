@@ -32,25 +32,29 @@ IpCameraController.prototype.createCamera = function(name,type,config){
     Scheduler.schedule(action,when,times);
   }
 
-  IpCameraController.moveLeftFor = function(api,duration){
-    var self = api;
+  IpCameraController.prototype.moveLeftFor = function(duration){
+    var self = this;
     var promise = new Promise(function (resolve, reject) {
       self.action("moveLeft",duration).then(function(){
         console.log("done moveLefFor");
         self.action("stopLeft").then(function(){
           console.log("stopped...");
-          resolve("stopped");          
+          resolve("stopped");
         });
       });
     });
     return promise;
   }
 
-  IpCameraController.moveRightFor = function(api,duration){
-    var self = api;
+  IpCameraController.prototype.moveRightFor = function(duration){
+    var self = this;
     var promise = new Promise(function (resolve, reject) {
       self.action("moveRight",duration).then(function(){
-        self.action("stopRight",1).then(resolve);
+        console.log("done moveRightFor");
+        self.action("stopRight").then(function(){
+          console.log("stopped...");
+          resolve("stopped");
+        });
       });
     });
     return promise;
