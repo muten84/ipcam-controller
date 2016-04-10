@@ -32,9 +32,13 @@
     "url": "https://github.com/muten84/ipcam-controller.git"
   },
   "keywords": [
-    "ipcamer",
+    "ipcamera",
+    "ipcam",
     "ptz",
-    "controller"
+    "ipcam controller",
+    "ipcamera controller",
+    "ipcam ptz control",
+    "ipcam scheduler"
   ],
   "author": "Luigi Bifulco",
   "license": "MIT",
