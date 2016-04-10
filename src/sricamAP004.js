@@ -2,7 +2,7 @@ var moveType = "camera.control.ptz.move";
 var stopType = "camera.control.ptz.stop";
 var velocityType = "camera.control.ptz.velocity";
 
-var sricam_af004 = {
+var sricam_ap004 = {
       auth : {
         userParam: "loginuse",
         passParam: "loginpas"
@@ -42,7 +42,7 @@ var sricam_af004 = {
       action:{
         type: moveType,
         value: "left"
-      }},      
+      }},
       {
       key: "moveRight",
       action:{
@@ -64,4 +64,4 @@ var sricam_af004 = {
       ]
   }
 
-  module.exports = sricam_af004;
+  module.exports = sricam_ap004;
