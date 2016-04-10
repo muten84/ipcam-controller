@@ -1,6 +1,5 @@
 var scheduler = require('fuzzy-scheduler');
 var moment = require('moment');
-var camera = require('./actions.js')
 
 function schedule(action,during,times){
   var now = moment();

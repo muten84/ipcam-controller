@@ -1,4 +1,4 @@
-var IPCamera = require("./SricamService.js");
+var IPCamera = require("./CameraService.js");
 var Promise = require("promise");
 
 var service = null;
