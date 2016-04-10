@@ -25,7 +25,7 @@ IpCameraController.prototype.createCamera = function(name,type,config){
   }
 
   IpCameraController.prototype.action = function(action,duration){
-    Service.execute(this.service,action,duratin);
+    Service.execute(this.service,action,duration);
   }
 
   IpCameraController.prototype.schedule = function(action,when,times){
