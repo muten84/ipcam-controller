@@ -22,7 +22,7 @@ function CameraService(config,camera){
   console.log(camera);
 }
 
-SricamService.execute = function(service,action,d){
+CameraService.execute = function(service,action,d){
   var camera =service.camera;
   var duration = d||defaultDuration;
   console.log("creating step: "+action+" - "+duration);
