@@ -13,8 +13,14 @@ IpCameraController.prototype.addType = function(name,typeSpec){
 }
 
 IpCameraController.prototype.createCamera = function(name,type,config){
-  this.camera = factory.createCamera(name,type,config);
-  this.service = new Service(config);
+  var ip  = config.ip;
+  var name = config.name;
+  var type = config.type;
+  var user = config.user;
+  var auth = config.pwd;
+  this.camera = factory.createCamera(name,type,  host:{ip: ip},
+    credentials: {login: user, pwd: auth});
+  this.service = new Service({},this.camera);
 }
 
 IpCameraController.prototype.action = function(action,duration){
