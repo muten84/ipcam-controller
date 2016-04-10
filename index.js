@@ -32,8 +32,8 @@ IpCameraController.prototype.createCamera = function(name,type,config){
     Scheduler.schedule(action,when,times);
   }
 
-  IpCameraController.prototype.moveLeftFor = function(duration){
-    var self = this;
+  IpCameraController.moveLeftFor = function(api,duration){
+    var self = api;
     var promise = new Promise(function (resolve, reject) {
       self.action("moveLeft",duration).then(function(){
         self.action("stopLeft",1).then(resolve);
@@ -42,8 +42,8 @@ IpCameraController.prototype.createCamera = function(name,type,config){
     return promise;
   }
 
-  IpCameraController.prototype.moveRightFor = function(duration){
-    var self = this;
+  IpCameraController.moveRightFor = function(api,duration){
+    var self = api;
     var promise = new Promise(function (resolve, reject) {
       self.action("moveRight",duration).then(function(){
         self.action("stopRight",1).then(resolve);
