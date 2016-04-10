@@ -55,7 +55,7 @@ function scheduleActionFor(camera,action,duration,during,times){
     default:
       break;
   }
-  scheduler.schedule(fun,during,times);
+  camera.schedule(fun,during,times);
 }
 
 function doNow(camera,action,duration){
