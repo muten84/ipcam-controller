@@ -14,7 +14,7 @@ function getCamera(type){
 }
 
 
-var exp{
+var exp = {
  addCameraType: addCameraType,
  getCamera: getCamera
 }
