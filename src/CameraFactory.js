@@ -48,5 +48,8 @@ function createSingletonCamera(name, type, props){
   return cameraInstance;
 }
 
-var o = {createSingletonCamera: createSingletonCamera}
+var o = {
+  createSingletonCamera: createSingletonCamera,
+  createCamera: createCamera
+}
 module.exports = o;
