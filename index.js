@@ -35,7 +35,8 @@ IpCameraController.prototype.createCamera = function(name,type,config){
   IpCameraController.moveLeftFor = function(api,duration){
     var self = api;
     var promise = new Promise(function (resolve, reject) {
-      self.action("moveLeft",duration).then(function(){console.log("done moveLefFor");}
+      self.action("moveLeft",duration).then(function(){
+        console.log("done moveLefFor");
       });
     });
     return promise;
