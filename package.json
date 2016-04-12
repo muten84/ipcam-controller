@@ -10,7 +10,8 @@
     "lint": "./node_modules/.bin/jshint ./src --reporter=./node_modules/jshint/src/reporters/default.js",
     "checkStyle": "./node_modules/.bin/jscs ./src --preset=node-style-guide",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- ./test --recursive -R spec -r should",
-    "posttest": "./node_modules/.bin/istanbul check-coverage"
+    "posttest": "./node_modules/.bin/istanbul check-coverage",
+    "jsdoc": "./node_modules/.bin/jsdoc -c conf/docconf.json -t ./node_modules/ink-docstrap/template -R README.md ./src/IpCameraController.js"
   },
   "dependencies": {
     "promise": "7.1.1",
@@ -20,6 +21,8 @@
   },
   "devDependencies": {
     "jshint": ">=2.8.0",
+    "jsdoc": "3.4.0",
+    "ink-docstrap": "1.1.4",
     "jscs": ">=2.8.0",
     "istanbul": ">=0.4.1",
     "mocha": ">=2.3.4",

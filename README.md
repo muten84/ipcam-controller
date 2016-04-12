@@ -1,14 +1,14 @@
 # ipcam-controller
 
-###Install:
+### Install
 
     npm install -g git+https://github.com/muten84/ipcam-controller.git
-    
+
 or from npm:
 
     npm install -g ipcam-controller
 
-###Usage:
+### Usage
 
     ipcam [options] action
 
@@ -25,18 +25,18 @@ or from npm:
     -s, --schedule <schedule>    Schedule given action with a fuzzy scheduler that execute command in a random moment within the scheduled date. The schedule parameter is in minutes, for instance -s 30 schedules action within 30 minutes it can be before but not after.
     -c, --count <count>          Use it in combination with schedule to tels the ipcam-controller how many times should schedule the given action. For instance -s 30 -c 3 will schedule for 3 times the given action and all executions will be made within 30 minutes.
 
-###Built in Model Types:
+### Built-in Camera Model Types
  - sricamAP004
 
 
-##API:
+## API
 The ipcam-controller module provides a library for javascript direct usage. The API are very simple. See examples below:
 
-###Import:
+### Import
 ```javascript
     var IPCamera = require('ipcam-controller');
 ```
-###Create and config a new camera:
+### Create and config a new camera
 ```javascript
     var camera = new IPCamera();
     var config = {
@@ -49,7 +49,7 @@ The ipcam-controller module provides a library for javascript direct usage. The 
     }
     camera.createCamera(config.name,config.type,config);
 ```
-###Actions:
+### Actions
 Possible actions are: moveLeft, moveRight, moveUp, moveDown, every action need a duration after which the service launchs the relative stop command.
 ```javascript
     //move camera left direction and after 3 secs stop movement.
@@ -62,15 +62,15 @@ You can invoke a generic action without the relative stop command, in this way y
         //for sricam it is useful to stop movement
     }
     camera.action("moveLeft", 3000).then(done);
-``` 
-###Scheduler:
+```
+### Scheduler
 With the schdule method you can schedule an action with a fuzzy scheduler, so the scheduled actions will not be predictable.
 ```javascript
-    //schedule examples: schedule an amount of two moveLeft actions within next 5 minutes, so all moves will be executed within 5 minutes. Duration is the default move duration passed in the config object 
+    //schedule examples: schedule an amount of two moveLeft actions within next 5 minutes, so all moves will be executed within 5 minutes. Duration is the default move duration passed in the config object
     camera.schedule("moveLeft",5,2);
 ```
 
-##Adding new camera types:
+## Adding new camera types
 You can add new camera type providing a spec object, you can provide your own calling the addType method before calling the createCamera method.
 Here is the built-in spec object for sricamAP004 model:
 
@@ -78,7 +78,7 @@ Here is the built-in spec object for sricamAP004 model:
     var moveType = "camera.control.ptz.move";
     var stopType = "camera.control.ptz.stop";
     var velocityType = "camera.control.ptz.velocity";
-    
+
     var sricam_ap004 = {
           auth : {
             userParam: "loginuse",
@@ -92,7 +92,7 @@ Here is the built-in spec object for sricamAP004 model:
               mid: "5",
               fast: "10"
             },
-    
+
             stop : {
               action: "decoder_control.cgi",
               paramName: "command",
@@ -101,7 +101,7 @@ Here is the built-in spec object for sricamAP004 model:
               left: "5",
               right: "7"
             },
-    
+
             move : {
               action: "decoder_control.cgi",
               paramName: "command",
@@ -140,8 +140,6 @@ Here is the built-in spec object for sricamAP004 model:
           }}
           ]
       }
-    
+
       module.exports = sricam_ap004;
 ```
-
-

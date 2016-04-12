@@ -1,9 +1,18 @@
+/**
+* Service class to execute a single action
+* @module CameraService
+* @author Luigi Bifulco
+*/
 var factory = require("./CameraFactory.js");
 var Step = require("./Step.js");
 var Promise = require("promise");
 
 var defaultDuration = null;
-
+/**
+  @constructor
+  @argument {!Object} config
+  @argument {?CameraControl} camera @see CameraControl
+*/
 function CameraService(config,camera){
   var ip  = config.ip;
   var name = config.name;
@@ -22,6 +31,10 @@ function CameraService(config,camera){
   console.log(camera);
 }
 
+/**
+  @function
+
+*/
 CameraService.execute = function(service,action,d){
   var camera =service.camera;
   var duration = d||defaultDuration;
