@@ -50,6 +50,18 @@ var sricam_ap004 = {
         value: "right"
       }},
       {
+      key: "moveUp",
+      action:{
+        type: moveType,
+        value: "up"
+      }},
+      {
+      key: "moveDown",
+      action:{
+        type: moveType,
+        value: "down"
+      }},
+      {
       key: "stopLeft",
       action:{
         type: stopType,
@@ -60,6 +72,18 @@ var sricam_ap004 = {
       action:{
         type: stopType,
         value: "right"
+      }},
+      {
+      key: "stopUp",
+      action:{
+        type: stopType,
+        value: "up"
+      }},
+      {
+      key: "stopDown",
+      action:{
+        type: stopType,
+        value: "down"
       }}
       ]
   }

@@ -60,4 +60,33 @@ IpCameraController.prototype.createCamera = function(name,type,config){
     return promise;
   }
 
+  IpCameraController.prototype.moveUpFor = function(duration){
+    var self = this;
+    var promise = new Promise(function (resolve, reject) {
+      self.action("moveUp",duration).then(function(){
+        console.log("done moveUpFor");
+        self.action("stopUp").then(function(){
+          console.log("stopped...");
+          resolve("stopped");
+        });
+      });
+    });
+    return promise;
+  }
+
+  IpCameraController.prototype.moveDownFor = function(duration){
+    var self = this;
+    var promise = new Promise(function (resolve, reject) {
+      self.action("moveDown",duration).then(function(){
+        console.log("done moveDownFor");
+        self.action("stopDown").then(function(){
+          console.log("stopped...");
+          resolve("stopped");
+        });
+      });
+    });
+    return promise;
+  }
+
+
   module.exports = IpCameraController;
