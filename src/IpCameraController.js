@@ -3,10 +3,10 @@
 * @module IpCameraController
 * @author Luigi Bifulco
 */
-var factory = require('./src/CameraFactory.js')
-var Service = require('./src/CameraService.js')
-var Scheduler = require('./src/scheduler.js')
-var Types = require('./src/scheduler.js')
+var factory = require('.CameraFactory.js')
+var Service = require('.CameraService.js')
+var Scheduler = require('.scheduler.js')
+var Types = require('.scheduler.js')
 var Promise = require("promise");
 
 /**
