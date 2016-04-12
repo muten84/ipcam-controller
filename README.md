@@ -29,8 +29,9 @@ or from npm:
  - sricamAP004
 
 
-## API
-The ipcam-controller module provides a library for javascript direct usage. The API are very simple. See examples below:
+## API and [Documentation](http://www.luigibifulco.it/projects/ipcam-controller/v1.0.x/)
+The ipcam-controller module provides a library for javascript direct usage. The API are very simple. [Here](http://www.luigibifulco.it/projects/ipcam-controller/v1.0.x/) you can find the relative documentation about all exported methods. 
+See examples below:
 
 ### Import
 ```javascript
