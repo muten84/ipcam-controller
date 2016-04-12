@@ -1,0 +1,28 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "logoFile": "",
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "dateFormat": "ddd MMM Do YYYY",
+    "outputSourceFiles": true,
+    "outputSourcePath": true,
+    "systemName": "ipcam-controller",
+    "footer": "",
+    "copyright": "Luigi Bifulco Copyright © 2016",
+    "navType": "vertical",
+    "theme": "lumen",
+    "linenums": true,
+    "collapseSymbols": false,
+    "inverseNav": false,
+    "protocol": "html://",
+    "methodHeadingReturns": true
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true
+  }
+}
