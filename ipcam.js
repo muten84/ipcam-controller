@@ -52,6 +52,12 @@ function scheduleActionFor(camera,action,duration,during,times){
     case 'right':
       fun = function(){camera.moveRightFor(duration);}
       break;
+    case 'up':
+      fun = function(){camera.moveUpFor(duration);}
+      break;
+    case 'down':
+      fun = function(){camera.moveDownFor(duration);}
+      break;
     default:
       break;
   }
@@ -66,6 +72,12 @@ function doNow(camera,action,duration){
       break;
     case 'right':
       camera.moveRightFor(duration);
+      break;
+    case 'up':
+      camera.moveUpFor(duration);
+      break;
+    case 'down':
+      camera.moveDownFor(duration);
       break;
     default:
       break;
