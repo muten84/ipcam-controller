@@ -1,6 +1,6 @@
 {
   "name": "ipcam-controller",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node module for controlling PTZ commands of IPCamera",
   "main": "index.js",
   "bin": {
