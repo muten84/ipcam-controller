@@ -1,6 +1,8 @@
 var moveType = "camera.control.ptz.move";
 var stopType = "camera.control.ptz.stop";
 var velocityType = "camera.control.ptz.velocity";
+var zoomType = "camera.control.ptz.zoom";
+var focusType = "camera.control.ptz.focus";
 
 var sricam_ap004 = {
       auth : {
@@ -11,11 +13,55 @@ var sricam_ap004 = {
         velocity : {
           action: "camera_control.cgi",
           param: "100",
+          paramName: "param",
           slow: "1",
           mid: "5",
           fast: "10"
         },
-
+        zoom: {
+          action: "camera_control.cgi",
+          in: {
+            param: "17"
+            paramName: "param",
+            value: {
+              paramName: "value",
+              start: "0",
+              stop: "1"
+            }
+          },
+          out: {
+            action: "camera_control.cgi",
+            param: "18"
+            paramName: "param",
+            value: {
+              paramName: "value",
+              start: "0",
+              stop: "1"
+            }
+          }
+        },
+        focus: {
+          action: "camera_control.cgi",
+          in: {
+            param: "19"
+            paramName: "param",
+            value: {
+              paramName: "value",
+              start: "0",
+              stop: "1"
+            }
+          },
+          out: {
+            action: "camera_control.cgi",
+            param: "20"
+            paramName: "param",
+            value: {
+              paramName: "value",
+              start: "0",
+              stop: "1"
+            }
+          }
+        },
         stop : {
           action: "decoder_control.cgi",
           paramName: "command",
@@ -24,7 +70,6 @@ var sricam_ap004 = {
           left: "5",
           right: "7"
         },
-
         move : {
           action: "decoder_control.cgi",
           paramName: "command",
@@ -84,7 +129,57 @@ var sricam_ap004 = {
       action:{
         type: stopType,
         value: "down"
-      }}
+      }},
+      {
+      key: "zoomInStart",
+      action:{
+        type: zoomType+".in",
+        value: "param",
+        valueAction: {
+          type: zoomType+".in.value",
+          value: "start"
+        }
+      }},
+      {
+      key: "zoomInStop",
+      action:{
+        type: zoomType+".in",
+        value: "param",
+        valueAction: {
+          type: zoomType+".in.value",
+          value: "stop"
+        }
+      }},
+      {
+      key: "focusInStart",
+      action:{
+        type: focusType+".in",
+        value: "param",
+        valueAction: {
+          type: focusType+".in.value",
+          value: "start"
+        }
+      }},
+      {
+      key: "zoomOutStart",
+      action:{
+        type: zoomType+".out",
+        value: "param",
+        valueAction: {
+          type: focusType+".out.value",
+          value: "start"
+        }
+      }},
+      {
+      key: "zoomOutStop",
+      action:{
+        type: zoomType+".out",
+        value: "param",
+        valueAction: {
+          type: focusType+".out.value",
+          value: "stop"
+        }
+      }},
       ]
   }
 
