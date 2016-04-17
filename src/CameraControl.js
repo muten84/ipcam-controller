@@ -60,17 +60,30 @@ CameraControl.prototype.decode = function(action,value,basicAuth){
   if(this.camera.host.port){
     host+=":"+this.camera.host.port;
   }
-  var path = eval("this."+action+".action");
-  var params = {};
-  var name = eval("this."+action+".paramName");
+  var type = eval("this."+action);
+  var path = type.action;
+  var params = [];
+  //var name = eval("this."+action+".paramName");
+  if(type.paramName){
+    params[type.paramName]=type.value;
+  }
   var val = eval("this."+action+"."+value);
-  //console.log(name);
-  //console.log(val);
-  params[name]=val;
+
+  params[val.paramName]=val.value;
+  console.log(params);
+
+
   params[this.camera.control.auth.userParam]=user;
   params[this.camera.control.auth.passParam]=pwd;
   var query = querystring.stringify(params);
   return protocol+host+"/"+path+"?"+query;
+}
+
+function decodeParamValue(o){
+  var pa = [];
+  pa[o.paramName]=o.value;
+  console.log(pa);
+  return {pa};
 }
 
 CameraControl.prototype.getActionType = function(key){

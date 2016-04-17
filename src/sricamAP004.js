@@ -10,78 +10,73 @@ var sricam_ap004 = {
         passParam: "loginpas"
       },
       ptz : {
-        velocity : {
-          action: "camera_control.cgi",
-          param: "100",
-          paramName: "param",
-          slow: "1",
-          mid: "5",
-          fast: "10"
-        },
-        zoom: {
-          action: "camera_control.cgi",
-          in: {
-            param: "17"
-            paramName: "param",
-            value: {
-              paramName: "value",
-              start: "0",
-              stop: "1"
-            }
-          },
-          out: {
-            action: "camera_control.cgi",
-            param: "18"
-            paramName: "param",
-            value: {
-              paramName: "value",
-              start: "0",
-              stop: "1"
-            }
-          }
-        },
-        focus: {
-          action: "camera_control.cgi",
-          in: {
-            param: "19"
-            paramName: "param",
-            value: {
-              paramName: "value",
-              start: "0",
-              stop: "1"
-            }
-          },
-          out: {
-            action: "camera_control.cgi",
-            param: "20"
-            paramName: "param",
-            value: {
-              paramName: "value",
-              start: "0",
-              stop: "1"
-            }
-          }
-        },
         stop : {
           action: "decoder_control.cgi",
-          paramName: "command",
-          up: "3",
-          down: "1",
-          left: "5",
-          right: "7"
+          up: {
+            paramName: "command",
+            value: "3"
+          },
+          down: {
+            paramName: "command",
+            value: "1"
+          },
+          left: {
+            paramName: "command",
+            value: "5"
+          },
+          right: {
+            paramName: "command",
+            value: "7"
+          }
         },
         move : {
           action: "decoder_control.cgi",
-          paramName: "command",
-          preset1: "31",
-          preset2: "33",
-          up: "0",
-          down: "2",
-          left: "6",
-          right: "4"
-        }
+          up: {
+            paramName: "command",
+            value: "0"
+          },
+          down: {
+            paramName: "command",
+            value: "2"
+          },
+          left: {
+            paramName: "command",
+            value: "6"
+          },
+          right: {
+            paramName: "command",
+            value: "4"
+          }
+        },
+        zoom: {
+          in: {
+            action: "camera_control.cgi",
+            value: "17",
+            paramName: "param",
+            start : {
+              paramName: "value",
+              value: "0"
+            },
+            stop : {
+              paramName: "value",
+              value: "0"
+            }
+          }
+        },
     },
     actions: [
+      {
+      key: "zoomInStart",
+      action:{
+        type: zoomType+".in",
+        value: "start"
+      }},
+      {
+      key: "zoomInStop",
+      action:{
+        type: zoomType+".in",
+        value: "stop"
+      }},
       {
       key: "moveLeft",
       action:{
@@ -129,58 +124,8 @@ var sricam_ap004 = {
       action:{
         type: stopType,
         value: "down"
-      }},
-      {
-      key: "zoomInStart",
-      action:{
-        type: zoomType+".in",
-        value: "param",
-        valueAction: {
-          type: zoomType+".in.value",
-          value: "start"
-        }
-      }},
-      {
-      key: "zoomInStop",
-      action:{
-        type: zoomType+".in",
-        value: "param",
-        valueAction: {
-          type: zoomType+".in.value",
-          value: "stop"
-        }
-      }},
-      {
-      key: "focusInStart",
-      action:{
-        type: focusType+".in",
-        value: "param",
-        valueAction: {
-          type: focusType+".in.value",
-          value: "start"
-        }
-      }},
-      {
-      key: "zoomOutStart",
-      action:{
-        type: zoomType+".out",
-        value: "param",
-        valueAction: {
-          type: focusType+".out.value",
-          value: "start"
-        }
-      }},
-      {
-      key: "zoomOutStop",
-      action:{
-        type: zoomType+".out",
-        value: "param",
-        valueAction: {
-          type: focusType+".out.value",
-          value: "stop"
-        }
-      }},
-      ]
+      }}
+    ]
   }
 
   module.exports = sricam_ap004;
